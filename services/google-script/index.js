@@ -663,7 +663,7 @@ function sendDiscordNotification (success) {
 		}
 	};
 
-	Utilities.sleep(5000);
+	// Utilities.sleep(5000);
 	UrlFetchApp.fetch(DISCORD_WEBHOOK, {
 		method: "POST",
 		contentType: "application/json",
@@ -671,7 +671,10 @@ function sendDiscordNotification (success) {
 			embeds: [embed],
 			username: success.assets.author,
 			avatar_url: success.assets.icon
-		})
+		}),
+		headers: {
+			"User-Agent": "hoyolab-auto (https://github.com/BobbyWibowo/hoyolab-auto, 1.0)"
+		}
 	});
 }
 
